@@ -1,4 +1,4 @@
-# This is the 1st step which change the images into matrices of integers (grayscale or RGB)
+# This is the 1st step which changes the images into matrices of integers (grayscale or RGB)
 # This file contains a function which return the matrix of an input image. The function will then
 # be called in the dataset.py
 
