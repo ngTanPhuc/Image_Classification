@@ -60,8 +60,8 @@ class DataLoader:
             temp_data = [] 
             temp_label = []
             for j in indices: 
-                temp_data.append(self.arr_dataset[j].data)
-                temp_label.append(self.arr_dataset[j].label)  
+                temp_data.append(self.arr_dataset[j].image_data)
+                temp_label.append(self.arr_dataset[j].image_label)  
             data = np.array(temp_data) 
             label = np.array(temp_label)
             temp_batch.append((data, label))
