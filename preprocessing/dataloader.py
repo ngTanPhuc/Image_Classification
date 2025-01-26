@@ -40,7 +40,8 @@ class DataLoader:
                 np.random.seed(self.seed)
             # shuffe index of each sample.
             np.random.shuffle(self.indices)
-        temp_batch = []                                        # temp array contains batches of samples
+        self.batches = []                                      # array contains result (batches list).
+        temp_batch = []                                        # temp array contains each batch of samples
         self.nbatch = len(self.arr_dataset) // self.batch_size # size of temp_batch (the number of batches)
         # iterate through each batch.
         for i in range(self.nbatch):
@@ -58,15 +59,15 @@ class DataLoader:
             # sort samples include data and label (shuffled if necessary) into each batch.
             indices = self.indices[begin:end]
             temp_data = [] 
-            temp_label = []
+            temp_labels = []
             for j in indices: 
                 temp_data.append(self.arr_dataset[j].image_data)
-                temp_label.append(self.arr_dataset[j].image_label)  
+                temp_labels.append(self.arr_dataset[j].image_label)  
             data = np.array(temp_data) 
-            label = np.array(temp_label)
-            temp_batch.append((data, label))
-        # array contains batches of samples
-        self.batch = np.array(temp_batch)
+            labels = np.array(temp_labels)
+            temp_batch = Batch(data, labels)
+            # array contains batches of samples
+            self.batches.append(temp_batch)
     # return an Iterator object to iterate over the elements in the batch
     def __iter__(self):
         return self.Iterator(self, 0)
