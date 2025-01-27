@@ -5,6 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0683581-1501-4fba-a2bd-4cb5078ca520" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/ann/layer/FCLayer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ann/layer/ILayer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ann/layer/activation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ann/layer/activation_funcs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ann/model/network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing/dataset.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/dataset.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/preprocessing/test_cases.py" beforeDir="false" afterPath="$PROJECT_DIR$/preprocessing/test_cases.py" afterDir="false" />
@@ -13,6 +18,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
