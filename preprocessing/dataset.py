@@ -53,9 +53,6 @@ class TensorDataset(Dataset):
     def getimage(self, index) -> DataLabel:  # This is the getitem method in the major assignment 1
         # TODO: return the data item (of type: DataLabel) that is specified by index
         if index < 0 or index > self.length():
-            print("Invalid index!")
+            raise IndexError("Invalid index!")
 
-        return_data = self.dataset[index]
-        return_label = self.labels[index]
-
-        return DataLabel(return_data, return_label)
+        return DataLabel(self.dataset[index], self.labels[index])
