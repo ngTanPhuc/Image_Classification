@@ -1,6 +1,16 @@
 import numpy as np
 from ILayer import ILayer
 
+
 class Activation(ILayer):
-    # TODO
-    pass
+    def __init__(self):
+        # TODO
+        pass
+
+    def forward(self, input):
+        # TODO
+        pass
+
+    def backward(self, output_gradient, learning_rate):
+        # TODO
+        pass
