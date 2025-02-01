@@ -5,7 +5,7 @@ from ILayer import ILayer
 class Activation(ILayer):
     def __init__(self):
         # TODO
-        pass
+        super().__init__()
 
     def forward(self, input):
         # TODO

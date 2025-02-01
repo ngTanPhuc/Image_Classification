@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c0683581-1501-4fba-a2bd-4cb5078ca520" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ann/layer/ILayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/layer/ILayer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,7 +38,7 @@
     "Python.dataset.executor": "Run",
     "Python.main.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "ann-branch",
     "ignore.virus.scanning.warn.message": "true",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
@@ -85,8 +86,18 @@
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="78fbc758-b992-460a-85b0-bdaeb78c6bfc" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
+        <entry key="78fbc758-b992-460a-85b0-bdaeb78c6bfc">
+          <value>
+            <State />
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>

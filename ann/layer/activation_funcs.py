@@ -7,7 +7,7 @@ from activation import Activation
 class Softmax(ILayer):
     def __init__(self):
         # TODO
-        pass
+        super().__init__()
 
     def forward(self, input):
         # TODO

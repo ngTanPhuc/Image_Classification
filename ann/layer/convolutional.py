@@ -6,7 +6,7 @@ from ILayer import ILayer
 class Convolutional(ILayer):
     def __init__(self, input_shape, kernel_size, depth):  # Ignore the squiggly line
         # TODO
-        pass
+        super().__init__()
 
     def forward(self, input):
         # TODO
