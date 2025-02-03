@@ -5,17 +5,17 @@ from activation import Activation
 
 
 class Softmax(ILayer):
-    def __init__(self):
-        # TODO
-        super().__init__()
-
     def forward(self, input):
         # TODO
-        pass
+        self.input = input
+        temp = np.exp(self.input)
+        self.output = temp / np.sum(temp)
+        return self.output
 
     def backward(self, output_gradient, learning_rate):
         # TODO
-        pass
+        n = np.size(self.output)
+        return np.dot((np.identity(n) - self.output.T) * self.output, output_gradient)
 
 
 class Sigmoid(Activation):
@@ -51,18 +51,6 @@ class ReLU(Activation):
             return 1 if x > 0 else 0
 
         super().__init__(relu, relu_derivative)
-
-
-class LeakyReLU(Activation):
-    def __init__(self):
-        # TODO
-        def leaky_relu():
-            # TODO
-            pass
-
-        def leaky_relu_derivative():
-            # TODO
-            pass
 
 
 class Tanh(Activation):
