@@ -32,9 +32,9 @@ class FCLayer(ILayer):
 
     def forward(self, X):
         # TODO: return output Y
-        self.X = X  # Store the input for the backward propagation
-        self.Y = np.dot(self.Weight, self.X) + self.Bias
-        return self.Y
+        self.input = X  # Store the input for the backward propagation
+        self.output = np.dot(self.Weight, self.input) + self.Bias
+        return self.output
 
     def backward(self, output_gradient, learning_rate):
                         # dE/dY(j x 1)
@@ -58,7 +58,7 @@ class FCLayer(ILayer):
                             = dE/dy_1.w_1m + dE/dy_2.w_2m +...+ dE/dy_j.w_jm
             ==> therefore, dE/dX = W^T . dE/dY
         """
-        Weight_gradient = np.dot(output_gradient, np.transpose(self.X))
+        Weight_gradient = np.dot(output_gradient, np.transpose(self.input))
         Bias_gradient = output_gradient
         self.Weight -= learning_rate * Weight_gradient
         self.Bias -= learning_rate * Bias_gradient
