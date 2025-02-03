@@ -34,6 +34,7 @@ class FCLayer(ILayer):
         # TODO: return output Y
         self.X = X  # Store the input for the backward propagation
         self.Y = np.dot(self.Weight, self.X) + self.Bias
+        return self.Y
 
     def backward(self, output_gradient, learning_rate):
                         # dE/dY(j x 1)
