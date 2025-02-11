@@ -7,13 +7,13 @@ class Convolutional(ILayer):
     def __init__(self, input_shape, kernel_size, depth):  # Ignore the squiggly line
         # input_shape: width x height x input channels (input channels, height, width) 
         # kernel_size: size of kernel (square matrix kernel_size x kernel_size)
-        # depth: number of kernel or number of ouput channels.
+        # depth: number of kernel or number of output channels.
         super().__init__()
         self.input_shape = input_shape 
         self.kernel_size = kernel_size
         self.depth = depth          
         self.filter = np.random.randn(depth, input_shape[0], kernel_size, kernel_size)
-        # kernel_size x kernel_size x input channels x ouput channels  
+        # kernel_size x kernel_size x input channels x output channels
         self.bias = np.zeros((depth, 1, 1)) 
         # number of kernel x 1 x 1
         # each kernel has a unique bias value.

@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c0683581-1501-4fba-a2bd-4cb5078ca520" name="Changes" comment="" />
+    <list default="true" id="c0683581-1501-4fba-a2bd-4cb5078ca520" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ann/layer/convolutional.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/layer/convolutional.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ann/model/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/model/network.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
