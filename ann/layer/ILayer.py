@@ -1,12 +1,27 @@
+"""
+         X  --->  +------------------+  --->  Y
+                  |      Layer       |
+                  |        W         |
+     dE/dX  <---  +------------------+  --->  dE/dY
+                          |
+                          v
+                        dE/dW
+"""
+
+
+from abc import ABC, abstractmethod
+
+
 class ILayer:
     def __init__(self):
-        # TODO
+        self.input = None
+        self.output = None
+
+    @abstractmethod
+    def forward(self, X):
         pass
 
-    def forward(self, input):
-        # TODO
-        pass
-
+    @abstractmethod
     def backward(self, output_gradient, learning_rate):
-        # TODO
+                        # dE/dY
         pass
