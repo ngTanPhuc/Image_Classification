@@ -12,7 +12,6 @@ import numpy as np
 
 
 def train(network, loss, loss_prime, x_train, y_train, epoch=1000, learning_rate=0.1, verbose=True):
-    error = 0
     for e in range(epoch):
         error = 0
         for i in range(len(x_train)):
@@ -35,6 +34,7 @@ def train(network, loss, loss_prime, x_train, y_train, epoch=1000, learning_rate
         # Show efficiency
         if verbose is True and e % 1000 == 0:
             print(f"Epoch {e}/{epoch}, Loss: {len(x_train):.6f}")
+                                            # Error: this will only print the number of x
 
 
 def predict(network, input_data):

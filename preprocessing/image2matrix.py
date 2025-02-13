@@ -13,6 +13,7 @@ from PIL import Image
 
 
 def img2matr(file_name: str):
+    # TODO: change this 2 RGB (not Grayscale)
     image = Image.open(file_name)  # Open the image
     grayscale_image = image.convert("L")  # Convert the image to grayscale
 
