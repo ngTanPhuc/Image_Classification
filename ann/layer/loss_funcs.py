@@ -23,4 +23,5 @@ def CCE(y_true, y_pred):  # Categorical Cross-entropy
 
 def CCE_derivative(y_true, y_pred):
     # TODO
-    return -y_true / y_pred
+    print(f"true: {y_true}, pred: {y_pred}")
+    return -np.array(y_true) / y_pred

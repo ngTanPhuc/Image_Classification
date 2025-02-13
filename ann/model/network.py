@@ -24,7 +24,7 @@ def train(network, loss, loss_prime, x_train, y_train, epoch=1000, learning_rate
                 output = layer.forward(output)
 
             # Calculate error through the loss function
-            error = error + loss(y, output)
+            error += loss(y, output)
 
             # Backward propagation
             grad = loss_prime(y, output)
@@ -32,9 +32,8 @@ def train(network, loss, loss_prime, x_train, y_train, epoch=1000, learning_rate
                 grad = layer.backward(grad, learning_rate)
 
         # Show efficiency
-        if verbose is True and e % 1000 == 0:
-            print(f"Epoch {e}/{epoch}, Loss: {len(x_train):.6f}")
-                                            # Error: this will only print the number of x
+        if verbose:
+            print(f"Epoch {e + 1}/{epoch}, Error: {error}")
 
 
 def predict(network, input_data):

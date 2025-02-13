@@ -1,5 +1,5 @@
 import numpy as np
-from ILayer import ILayer
+from ann.layer.ILayer import ILayer
 
 
 class Reshape(ILayer):

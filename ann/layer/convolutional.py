@@ -1,6 +1,6 @@
 import numpy as np
 from scipy import signal
-from ILayer import ILayer
+from ann.layer.ILayer import ILayer
 
 
 """

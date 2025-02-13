@@ -12,13 +12,16 @@ import numpy as np
 from PIL import Image
 
 
-def img2matr(file_name: str):
-    # TODO: change this 2 RGB (not Grayscale)
-    image = Image.open(file_name)  # Open the image
-    grayscale_image = image.convert("L")  # Convert the image to grayscale
+def img2matr(file_path: str, img_size=(64, 64)):
+    image = Image.open(file_path)  # Open the image
+    image = image.convert("RGB")  # Convert the image to RGB
+    image = image.resize(img_size)
 
-    matrix = np.array(grayscale_image)  # Convert the image into matrix
+    matrix = np.array(image)  # Convert the image into matrix (height, width, channels)
 
-    return matrix
+    # Convert to (channels, height, width) to pass to Convolutional layer
+    input_image = np.transpose(matrix, (2, 0, 1))
+    input_image = input_image.astype(np.float32)  # Convert the data type from uint8 to float32 to use for division
+    input_image /= 255.0
 
-
+    return input_image

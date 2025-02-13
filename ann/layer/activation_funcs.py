@@ -1,7 +1,7 @@
 # Implement the activation functions needed for the neural network (e.g. Tanh, Sigmoid, ReLU,...)
 import numpy as np
-from ILayer import ILayer
-from activation import Activation
+from ann.layer.ILayer import ILayer
+from ann.layer.activation import Activation
 
 
 class Softmax(ILayer):
@@ -22,7 +22,7 @@ class Sigmoid(Activation):
     def __init__(self):
         # TODO
         def sigmoid(x):
-            return 1 / (1 - np.exp(-x))
+            return 1 / (1 + np.exp(-x))
 
         def sigmoid_derivative(x):
             # TODO
