@@ -2,7 +2,7 @@ from ann.layer.FCLayer import FCLayer
 from ann.layer.convolutional import Convolutional
 from ann.layer.reshape import Reshape
 from ann.layer.loss_funcs import CCE, CCE_derivative
-from ann.layer.activation_funcs import Sigmoid
+from ann.layer.activation_funcs import Sigmoid, Softmax
 from ann.model.network import train, predict
 from preprocessing.image2matrix import img2matr
 from preprocessing.dataset import TensorDataset
@@ -11,15 +11,15 @@ import os
 import numpy as np
 
 Label_map = {
-    "Horses": [1, 0, 0, 0],
-    "Dogs": [0, 1, 0, 0],
-    "Cats": [0, 0, 1, 0],
-    "Chickens": [0, 0, 0, 1]
+    "Horses": [[1.], [0.], [0.], [0.]],
+    "Dogs": [[0.], [1.], [0.], [0.]],
+    "Cats": [[0.], [0.], [1.], [0.]],
+    "Chickens": [[0.], [0.], [0.], [1.]]
 }
 
 
 # Load the image into a TensorDataset
-def load_n_preprocess_data(data_dir, img_size=(64, 64)):
+def load_n_preprocess_data(data_dir, img_size=(64, 64), num_sample_each_class=100):
     images = []
     labels = []
 
@@ -29,7 +29,7 @@ def load_n_preprocess_data(data_dir, img_size=(64, 64)):
             break
 
         # Add all images in the class folder to this variable
-        files = [f for f in os.listdir(class_dir) if f.endswith((".jpg", ".png"))]
+        files = [f for f in os.listdir(class_dir) if f.endswith((".jpg", ".png"))][:num_sample_each_class]
 
         # Convert each image into a matrix
         for file in files:
@@ -52,7 +52,7 @@ network = [
     FCLayer(30752, 128),
     Sigmoid(),
     FCLayer(128, 4),
-    Sigmoid()
+    Softmax()
 ]
 
 # train_loader = DataLoader(train_data, 32, True, False)
@@ -63,6 +63,6 @@ train(
     CCE_derivative,
     x_train,
     y_train,
-    1000,
+    500,
     0.1
 )

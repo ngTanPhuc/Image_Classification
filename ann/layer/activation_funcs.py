@@ -8,14 +8,17 @@ class Softmax(ILayer):
     def forward(self, input):
         # TODO
         self.input = input
-        temp = np.exp(self.input)
+        # Subtract the number with the largest number to prevent the exp too large
+        temp = np.exp(self.input - np.max(self.input))
         self.output = temp / np.sum(temp)
         return self.output
 
     def backward(self, output_gradient, learning_rate):
         # TODO
-        n = np.size(self.output)
-        return np.dot((np.identity(n) - self.output.T) * self.output, output_gradient)
+        temp = self.output.reshape(-1, 1)  # Convert to column vector
+        jacobian = np.diagflat(temp) - np.dot(temp, np.transpose(temp))
+
+        return np.dot(jacobian, output_gradient)
 
 
 class Sigmoid(Activation):

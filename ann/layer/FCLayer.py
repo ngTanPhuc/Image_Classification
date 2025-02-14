@@ -27,7 +27,7 @@ class FCLayer(ILayer):
     def __init__(self, X_size, Y_size):
         super().__init__()
         rgn = np.random.default_rng()  # random number generator
-        self.Weight = rgn.random(size=(Y_size, X_size))  # Create a matrix with random numbers
+        self.Weight = rgn.standard_normal(size=(Y_size, X_size)) * 0.001  # Small initial weights
         self.Bias = rgn.random(size=(Y_size, 1))
 
     def forward(self, X):
