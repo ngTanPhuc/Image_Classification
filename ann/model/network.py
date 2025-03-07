@@ -29,6 +29,9 @@ def train(network, loss, loss_prime, x_train, y_train, epoch=1000, learning_rate
             # Calculate error through the loss function
             error += loss(y, output)
 
+            print(f"y_true: {[f'{val[0]:.4f}' for val in y]}")
+            print(f"y_pred: {[f'{val[0]:.4f}' for val in output]}")
+
             # Backward propagation
             grad = loss_prime(y, output)
             for layer in reversed(network):

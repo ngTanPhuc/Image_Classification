@@ -9,6 +9,7 @@ from preprocessing.dataset import TensorDataset
 from preprocessing.dataloader import DataLoader
 import os
 import numpy as np
+import random
 
 Label_map = {
     "Horses": [[1.], [0.], [0.], [0.]],
@@ -20,8 +21,7 @@ Label_map = {
 
 # Load the image into a TensorDataset
 def load_n_preprocess_data(data_dir, img_size=(64, 64), num_sample_each_class=100):
-    images = []
-    labels = []
+    d_n_l = []
 
     for label, one_hot in Label_map.items():
         class_dir = os.path.join(data_dir, label)  # Concatenate the data_dir and the label. e.g. dataimages/Horses
@@ -36,13 +36,15 @@ def load_n_preprocess_data(data_dir, img_size=(64, 64), num_sample_each_class=10
             file_path = os.path.join(class_dir, file)  # The path to the image
             img_matrix = img2matr(file_path, img_size)
 
-            images.append(img_matrix)
-            labels.append(one_hot)
+            d_n_l.append((img_matrix, one_hot))
 
-    return images, labels
+    return d_n_l
 
 
-x_train, y_train = load_n_preprocess_data("data_images")
+data_n_labels = load_n_preprocess_data("data_images")
+random.shuffle(data_n_labels)  # Shuffle the pairs of data and label
+x_train = [pair[0] for pair in data_n_labels]
+y_train = [pair[1] for pair in data_n_labels]
 # train_data = TensorDataset(x, y)
 
 network = [

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c0683581-1501-4fba-a2bd-4cb5078ca520" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ann/layer/FCLayer.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/layer/FCLayer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ann/layer/activation_funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/layer/activation_funcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ann/layer/loss_funcs.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/layer/loss_funcs.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ann/model/network.py" beforeDir="false" afterPath="$PROJECT_DIR$/ann/model/network.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
@@ -26,12 +24,15 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2r7eB8WqTOiNq8XbQLYnSSijhNf" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -104,19 +105,7 @@
         </entry>
         <entry key="MAIN">
           <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="dataset-n-image2matrix" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
+            <State />
           </value>
         </entry>
       </map>
