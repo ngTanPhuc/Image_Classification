@@ -42,10 +42,8 @@ def load_n_preprocess_data(data_dir, img_size=(64, 64), num_sample_each_class=10
 
 
 data_n_labels = load_n_preprocess_data("data_images")
-random.shuffle(data_n_labels)  # Shuffle the pairs of data and label
-x_train = [pair[0] for pair in data_n_labels]
-y_train = [pair[1] for pair in data_n_labels]
-# train_data = TensorDataset(x, y)
+                                    # x_train                           # y_train
+train_data = TensorDataset([pair[0] for pair in data_n_labels], [pair[1] for pair in data_n_labels])
 
 network = [
     Convolutional((3, 64, 64), 3, 8),

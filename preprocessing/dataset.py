@@ -15,7 +15,7 @@ class DataLabel:  # This class will store a pair of 1 image and its label
         self.image_label = image_label
 
 
-class Batch:  # This class will store multiple images
+class Batch:  # This class will store multiple images in a Batch
     def __init__(self, batch_data, batch_labels):
         # TODO
         self.batch_data = batch_data
