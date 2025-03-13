@@ -13,10 +13,6 @@ class DataLoader:
         def __ne__(self, other):
             return self.index != other.index
 
-        # obtain an iterator from an iterable object
-        def __iter__(self):
-            return self
-
         # sequential traversal of the elements in the object
         def __next__(self):
             if self.index < len(self.dataLoader.batches):
@@ -26,8 +22,8 @@ class DataLoader:
                 raise StopIteration
 
         # access the elements of an object by index
-        def __getitem__(self):
-            return self.dataLoader.batches[self.index]
+        def __getitem__(self, index):
+            return self.dataLoader.batches[index]
 
     # constructor of class DataLoader
     def __init__(self, arr_dataset, batch_size, shuffle=True, drop_last=False, seed=-1):
