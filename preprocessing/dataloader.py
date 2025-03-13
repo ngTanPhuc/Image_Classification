@@ -22,6 +22,8 @@ class DataLoader:
                 raise StopIteration
 
         # access the elements of an object by index
+        # !This function returns the batch at the index, so it is the
+        # same as the getBatch (former __getitem__ outside this Iterator class) function below?
         def __getitem__(self, index):
             return self.dataLoader.batches[index]
 
