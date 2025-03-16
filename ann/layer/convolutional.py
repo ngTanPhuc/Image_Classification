@@ -12,39 +12,41 @@ shape(Y) = shape(I) - shape(K) + 1
 
 
 class Convolutional(ILayer):
-    def __init__(self, input_shape, kernel_size, depth):
+    def __init__(self, input_image_shape, kernel_size, depth):
         # input_shape: width x height x input channels (input channels, height, width)
         # kernel_size: size of kernel (square matrix kernel_size x kernel_size)
         # depth: number of kernels or number of output channels.
         super().__init__()
-        self.input_shape = input_shape 
+        self.input_image_shape = input_image_shape
         self.kernel_size = kernel_size
         self.depth = depth                  # input channels
-        self.filter = np.random.randn(depth, input_shape[0], kernel_size, kernel_size)
+        self.filter = np.random.randn(depth, input_image_shape[0], kernel_size, kernel_size)
         # kernel_size x kernel_size x input channels x output channels
         self.bias = np.random.randn(depth, 1, 1)
         # number of kernels x 1 x 1
         # each kernel has a unique bias value.
 
     def forward(self, input):
-        # input: width x height x input channels
-        # input.shape: (input channels, height, width)
+        # input: width x height x input channels x batch_size
+        # input.shape: (batch_size, input channels, height, width)
         self.input = input
 
         # height and width of input image
         shape = np.shape(input)
-        in_width = shape[2]
-        in_height = shape[1]
+        batch_size = shape[0]
+        in_height = shape[2]
+        in_width = shape[3]
 
         # height and width of output image
         out_height = in_height - self.kernel_size + 1
         out_width = in_width - self.kernel_size + 1
-        output = np.zeros((self.depth, out_height, out_width))
+        output = np.zeros((batch_size, self.depth, out_height, out_width))
 
-        for i in range(self.depth):
-            for j in range(self.input_shape[0]):  
-                output[i] += signal.correlate(input[j], self.filter[i, j], mode='valid')
-            output[i] += self.bias[i]
+        for data_idx in range(batch_size):
+            for i in range(self.depth):
+                for j in range(self.input_image_shape[0]):
+                    output[data_idx][i] += signal.correlate(input[data_idx][j], self.filter[i, j], mode='valid')
+                output[data_idx][i] += self.bias[i]
 
         return output  
 
@@ -54,9 +56,9 @@ class Convolutional(ILayer):
         bias_gradient = np.sum(output_gradient, axis=(1, 2), keepdims=True)
         self.bias -= learning_rate * bias_gradient 
         # update self.filter & input_gradient
-        input_gradient = np.zeros(self.input_shape)
+        input_gradient = np.zeros(self.input_image_shape)
         for i in range(self.depth):
-            for j in range(self.input_shape[0]):
+            for j in range(self.input_image_shape[0]):
                 self.filter[i, j] -= learning_rate * signal.correlate2d(self.input[j], output_gradient[i], mode='valid')
                 input_gradient[j] += signal.correlate2d(output_gradient[i], self.filter[i, j], mode='full')
                                             # convolve2d? We have to rotate the filter 180deg
