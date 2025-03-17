@@ -16,6 +16,7 @@ class ILayer:
     def __init__(self):
         self.input = None
         self.output = None
+        self.batch_size = None
 
     @abstractmethod
     def forward(self, X):

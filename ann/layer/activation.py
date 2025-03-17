@@ -28,10 +28,16 @@ class Activation(ILayer):
         self.activation = activation
         self. activation_derivative = activation_derivative
 
-    def forward(self, input):
+    def forward(self, X):
         # TODO: return the result of the activation function
-        self.input = input
-        self.output = self.activation(self.input)
+        self.input = X
+        shape = np.shape(self.input)
+        self.batch_size = shape[0]
+        self.output = np.zeros((self.batch_size, shape[1]))
+
+        for data_idx in range(self.batch_size):
+            self.output[data_idx] = self.activation(self.input[data_idx])
+
         return self.output
 
     def backward(self, output_gradient, learning_rate):

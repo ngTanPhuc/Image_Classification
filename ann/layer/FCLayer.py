@@ -33,7 +33,13 @@ class FCLayer(ILayer):
     def forward(self, X):
         # TODO: return output Y
         self.input = X  # Store the input for the backward propagation
-        self.output = np.dot(self.Weight, self.input) + self.Bias
+        shape = np.shape(self.input)
+        self.batch_size = shape[0]
+        self.output = np.zeros((self.batch_size, shape[1]))
+
+        for data_idx in range(self.batch_size):
+            self.output[data_idx] = np.dot(self.Weight, self.input) + self.Bias
+
         return self.output
 
     def backward(self, output_gradient, learning_rate):

@@ -5,12 +5,19 @@ from ann.layer.activation import Activation
 
 
 class Softmax(ILayer):
-    def forward(self, input):
+    def forward(self, X):
         # TODO
-        self.input = input
-        # Subtract the number with the largest number to prevent the exp too large
-        temp = np.exp(self.input - np.max(self.input))
-        self.output = temp / np.sum(temp)
+        self.input = X
+        shape = np.shape(self.input)
+        self.batch_size = shape[0]
+        self.output = np.zeros((self.batch_size, shape[1]))
+
+        for data_idx in range(self.batch_size):
+            data_img = self.input[data_idx]
+            # Subtract the number with the largest number to prevent the exp too large
+            temp = np.exp(data_img - np.max(data_img))
+            self.output[data_idx] = temp / np.sum(temp)
+
         return self.output
 
     def backward(self, output_gradient, learning_rate):
