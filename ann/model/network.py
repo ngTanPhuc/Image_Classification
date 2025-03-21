@@ -68,7 +68,7 @@ from preprocessing.dataloader import DataLoader
 #     return results
 
 
-def train(network, loss, loss_prime, data_loader: DataLoader, epoch=1000, learning_rate=0.01, verbose=True):
+def train(network, loss, loss_prime, data_loader: DataLoader, epoch=1000, learning_rate=0.1, verbose=True):
     iterator = iter(data_loader)  # iterator is of type DataLoader.Iterator
 
     print(f"total images: {data_loader.get_sample_count()}")
@@ -93,7 +93,7 @@ def train(network, loss, loss_prime, data_loader: DataLoader, epoch=1000, learni
 
         # Show efficiency
         if verbose:
-            print(f"Epoch {e + 1}/{epoch}, Error: {error}")
+            print(f"Epoch {(e + 1):02}/{epoch}, Error: {error}")
 
 
 def predict(network, input_batch):
