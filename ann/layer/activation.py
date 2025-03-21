@@ -31,9 +31,9 @@ class Activation(ILayer):
     def forward(self, X):
         # TODO: return the result of the activation function
         self.input = X
-        shape = np.shape(self.input)
-        self.batch_size = shape[0]
-        self.output = np.zeros((self.batch_size, shape[1]))
+        input_shape = np.shape(self.input)
+        self.batch_size = input_shape[0]
+        self.output = np.zeros(input_shape)
 
         for data_idx in range(self.batch_size):
             self.output[data_idx] = self.activation(self.input[data_idx])

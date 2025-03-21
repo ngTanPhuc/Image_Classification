@@ -48,7 +48,7 @@ class TensorDataset(Dataset):
 
     def length(self):
         # TODO: return the size of the first dimension (dimension 0)
-        return self.dataset.shape[0]
+        return len(self.dataset)
 
     def getimage(self, index) -> DataLabel:  # This is the getitem method in the major assignment 1
         # TODO: return the data item (of type: DataLabel) that is specified by index

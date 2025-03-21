@@ -46,7 +46,7 @@ class DataLoader:
             # shuffle index of each sample.
             np.random.shuffle(self.indices)
 
-        self.batches = []                                       # array contains result (batches list).
+        self.batches = []  # Array contains items of type Batch
         self.nbatch = self.arr_dataset.length() // self.batch_size  # size of temp_batch (the number of batches)
         # iterate through each batch.
         for i in range(self.nbatch):

@@ -34,11 +34,11 @@ class FCLayer(ILayer):
         # TODO: return output Y
         self.input = X  # Store the input for the backward propagation
         shape = np.shape(self.input)
-        self.batch_size = shape[0]
-        self.output = np.zeros((self.batch_size, shape[1]))
+        self.batch_size = shape[0]                  # Y_size
+        self.output = np.zeros((self.batch_size, self.Weight.shape[0], 1))
 
         for data_idx in range(self.batch_size):
-            self.output[data_idx] = np.dot(self.Weight, self.input) + self.Bias
+            self.output[data_idx] = np.dot(self.Weight, self.input[data_idx]) + self.Bias
 
         return self.output
 
@@ -64,9 +64,20 @@ class FCLayer(ILayer):
                             = dE/dy_1.w_1m + dE/dy_2.w_2m +...+ dE/dy_j.w_jm
             ==> therefore, dE/dX = W^T . dE/dY
         """
-        Weight_gradient = np.dot(output_gradient, np.transpose(self.input))
-        Bias_gradient = output_gradient
+        Weight_gradient = np.zeros_like(self.Weight)
+        for data_idx in range(self.batch_size):
+            m_output_gradient = np.reshape(output_gradient[data_idx], (output_gradient[data_idx].shape[0], 1))
+            m_input = np.reshape(self.input[data_idx], (self.input[data_idx].shape[0], 1))
+            Weight_gradient += np.dot(m_output_gradient, np.transpose(m_input))
+        Weight_gradient /= self.batch_size
         self.Weight -= learning_rate * Weight_gradient
-        self.Bias -= learning_rate * Bias_gradient
-        X_gradient = np.dot(np.transpose(self.Weight), output_gradient)
+
+        Bias_gradient = np.mean(output_gradient, axis=0)
+        self.Bias -= learning_rate * np.reshape(Bias_gradient, (Bias_gradient.shape[0], 1))
+
+        X_gradient = np.zeros_like(self.input)
+        for data_idx in range(self.batch_size):
+            temp = np.dot(np.transpose(self.Weight), output_gradient[data_idx])
+            X_gradient[data_idx] = np.dot(np.transpose(self.Weight), output_gradient[data_idx])
+
         return X_gradient

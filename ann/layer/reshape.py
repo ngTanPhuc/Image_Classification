@@ -13,4 +13,4 @@ class Reshape(ILayer):
         return np.reshape(X, (self.batch_size, self.output_shape[0], self.output_shape[1]))
 
     def backward(self, output_gradient, learning_rate):
-        return np.reshape(output_gradient, self.input_shape)
+        return np.reshape(output_gradient, ((self.batch_size,) + self.input_shape))

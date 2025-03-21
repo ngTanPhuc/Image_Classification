@@ -19,9 +19,9 @@ def CCE(y_true, y_pred):  # Categorical Cross-entropy
     y_pred = np.clip(y_pred, 1e-12, 1 - 1e-12)
     losses = -np.sum(y_true * np.log(y_pred), axis=1)
     return np.mean(losses)
-    # NOTE: should pay attention to training in batches instead of training in single image
 
 
 def CCE_derivative(y_true, y_pred):
     # TODO
-    return -np.array(y_true) / y_pred  # TODO: check for error, output_gradient (4x4)
+    y_true = np.array(y_true)
+    return -(y_true / y_pred) / y_true.shape[0]

@@ -43,7 +43,8 @@ def load_n_preprocess_data(data_dir, img_size=(64, 64), num_sample_each_class=10
 
 data_n_labels = load_n_preprocess_data("data_images")
                                     # x_train                           # y_train
-train_data = TensorDataset([pair[0] for pair in data_n_labels], [pair[1] for pair in data_n_labels])
+tensor_data = TensorDataset([pair[0] for pair in data_n_labels], [pair[1] for pair in data_n_labels])
+train_data = DataLoader(tensor_data, 32,True, False)
 
 network = [
     Convolutional((3, 64, 64), 3, 8),
@@ -61,8 +62,7 @@ train(
     network,
     CCE,
     CCE_derivative,
-    x_train,
-    y_train,
+    train_data,
     500,
     0.1
 )

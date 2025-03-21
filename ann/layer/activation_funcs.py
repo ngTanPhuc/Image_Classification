@@ -10,7 +10,7 @@ class Softmax(ILayer):
         self.input = X
         shape = np.shape(self.input)
         self.batch_size = shape[0]
-        self.output = np.zeros((self.batch_size, shape[1]))
+        self.output = np.zeros((self.batch_size, shape[1], 1))
 
         for data_idx in range(self.batch_size):
             data_img = self.input[data_idx]
@@ -22,10 +22,14 @@ class Softmax(ILayer):
 
     def backward(self, output_gradient, learning_rate):
         # TODO
-        temp = self.output.reshape(-1, 1)  # Convert to column vector
-        jacobian = np.diagflat(temp) - np.dot(temp, np.transpose(temp))
+        X_gradient = np.zeros_like(output_gradient)
 
-        return np.dot(jacobian, output_gradient)
+        for data_idx in range(self.batch_size):
+            temp = self.output[data_idx].reshape(-1, 1)  # Reshape to column vector
+            jacobian = np.diagflat(temp) - np.dot(temp, np.transpose(temp))
+            X_gradient[data_idx] = np.dot(jacobian, output_gradient[data_idx])
+
+        return X_gradient
 
 
 class Sigmoid(Activation):
